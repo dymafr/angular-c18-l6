@@ -7,7 +7,8 @@ import {
   state,
   style,
   transition,
-  trigger
+  trigger,
+  AnimationEvent
 } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
 
@@ -21,7 +22,19 @@ import { Component, OnInit } from "@angular/core";
         ":enter",
         query("li", [
           style({ opacity: 0, transform: "translateX(-100px" }),
-          stagger(-30, animate("500ms ease-in"))
+          stagger(-30, animate("1500ms ease-in"))
+        ])
+      ),
+      transition(
+        ":leave",
+        query("li", [
+          stagger(
+            -30,
+            animate(
+              "1500ms ease-in",
+              style({ opacity: 0, transform: "translateX(100px" })
+            )
+          )
         ])
       )
     ])
@@ -29,6 +42,13 @@ import { Component, OnInit } from "@angular/core";
 })
 export class AppComponent implements OnInit {
   public state = "normal";
+  public display = true;
+
+  public toggle(event: AnimationEvent) {
+    if (event.phaseName === "done") {
+      this.display = !this.display;
+    }
+  }
 
   ngOnInit() {}
 }
