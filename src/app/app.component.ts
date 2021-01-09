@@ -19,14 +19,14 @@ import { Component, OnInit } from "@angular/core";
         ":enter",
         query("li", [
           style({ opacity: 0, transform: "translateX(-100px" }),
-          stagger(-30, animate("1500ms ease-in"))
+          stagger(-200, animate("1500ms ease-in"))
         ])
       ),
       transition(
         ":leave",
         query("li", [
           stagger(
-            -30,
+            -200,
             animate(
               "1500ms ease-in",
               style({ opacity: 0, transform: "translateX(100px" })
