@@ -1,10 +1,7 @@
 import {
   animate,
-  group,
-  keyframes,
   query,
   stagger,
-  state,
   style,
   transition,
   trigger,
@@ -41,7 +38,6 @@ import { Component, OnInit } from "@angular/core";
   ]
 })
 export class AppComponent implements OnInit {
-  public state = "normal";
   public display = true;
 
   public toggle(event: AnimationEvent) {
